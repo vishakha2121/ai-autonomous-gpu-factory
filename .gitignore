@@ -51088,30 +51088,4 @@ backend/database/gpu_factory.db
 logs/
 
 # ==========================================
-# NODE.JS / FRONTEND SPECIFIC
-# ==========================================
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-lerna-debug.log*
-
-# Build outputs
-dist/
-dist-ssr/
-build/
-out/
-.next/
-.nuxt/
-frontend/dist/
-
-# Vite cache
-.vite/
-node_modules/.vite/
-
-# ==========================================
-# ENVIRONMENT VARIABLES & SECRETS
-# ==========================================
-.env
-.env.local
+s
