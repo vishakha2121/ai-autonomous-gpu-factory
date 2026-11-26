@@ -1,101 +1,206 @@
+<div align="center">
+
 # 🤖 AI Autonomous GPU Factory
 
-> An AI-powered autonomous GPU cluster management system that optimizes GPU placement, inference routing, distributed training, thermal management, and power consumption — all powered by Google Gemini AI.
+**An AI-Powered Autonomous GPU Cluster Management System**
 
-![Status](https://img.shields.io/badge/status-active-success)
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green)
-![React](https://img.shields.io/badge/React-18+-cyan)
-![License](https://img.shields.io/badge/license-MIT-purple)
-![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-orange)
+*Optimizing GPU Placement, Inference Routing, Distributed Training, Thermal Management & Power Consumption using Google Gemini AI.*
+
+[![Status](https://img.shields.io/badge/status-active-success)](#)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue)](#)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green)](#)
+[![React](https://img.shields.io/badge/React-18+-cyan)](#)
+[![License](https://img.shields.io/badge/license-MIT-purple)](#)
+[![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-orange)](#)
+
+[Features](#-features) • [Architecture](#-architecture) • [Tech Stack](#-tech-stack) • [Setup](#-quick-start) • [API Docs](#-api-endpoints) • [Screenshots](#-screenshots)
+
+</div>
 
 ---
 
-## 📖 Overview
+## 📖 Table of Contents
 
-**AI Autonomous GPU Factory** is a full-stack practice project that simulates and manages a virtual GPU cluster of thousands of GPUs. It uses **AI-driven decision making** (Google Gemini) to autonomously:
+1. [Overview](#-overview)
+2. [Key Features](#-features)
+3. [System Architecture](#-architecture)
+4. [Tech Stack](#-tech-stack)
+5. [Project Structure](#-project-structure)
+6. [Prerequisites](#-prerequisites)
+7. [Quick Start](#-quick-start)
+8. [Environment Variables](#-environment-variables)
+9. [Database Schema](#-database-schema)
+10. [API Endpoints](#-api-endpoints)
+11. [AI Integration (Gemini)](#-ai-integration-gemini)
+12. [Simulation Engine](#-simulation-engine)
+13. [Frontend Guide](#-frontend-guide)
+14. [Backend Guide](#-backend-guide)
+15. [How It Works (Step-by-Step)](#-how-it-works-step-by-step)
+16. [Testing](#-testing)
+17. [Deployment](#-deployment)
+18. [Troubleshooting](#-troubleshooting)
+19. [Roadmap](#-roadmap)
+20. [Learning Outcomes](#-learning-outcomes)
+21. [Contributing](#-contributing)
+22. [License](#-license)
+23. [Acknowledgements](#-acknowledgements)
 
-- 🎯 **Optimize GPU placement** for incoming workloads
-- 🔀 **Route inference requests** to the best available GPU
-- 🏋️ **Schedule distributed training** across multiple GPUs
-- 🌡️ **Manage thermal** conditions and prevent overheating
-- ⚡ **Optimize power consumption** and improve efficiency
+---
 
-Since this is a **practice project** designed to run on **CPU-only laptops**, a **virtual cluster simulation engine** generates realistic GPU telemetry (temperature, power, utilization) in real-time.
+## 🌟 Overview
+
+**AI Autonomous GPU Factory** is a full-stack practice project designed to simulate, manage, and optimize a virtual GPU cluster consisting of hundreds or thousands of GPUs.
+
+In real-world data centers (like those operated by AWS, Google Cloud, or Microsoft Azure), managing thousands of GPUs is a massive operational challenge. You need to decide:
+- **Which GPU** should run a specific workload?
+- **How to route** inference requests to minimize latency?
+- **How to schedule** distributed training across multiple GPUs?
+- **How to prevent** overheating (thermal management)?
+- **How to reduce** power consumption while maximizing throughput?
+
+This project tackles all these challenges using a **multi-factor optimization algorithm** combined with **Google Gemini AI** for explainable decision-making.
+
+Since the project is designed to run on **CPU-only laptops** (no expensive GPUs required), a **Virtual Cluster Simulation Engine** generates realistic GPU telemetry — temperatures, power draws, utilization, and health metrics — in real-time.
+
+> **⚠️ Disclaimer:** This is a **practice/learning project**. It is **not** intended for production deployment. The simulation engine mimics real GPU behavior but is not connected to actual hardware.
 
 ---
 
 ## ✨ Features
 
-### 🎯 1. GPU Placement Optimization
-- Multi-factor scoring algorithm (memory, thermal headroom, power headroom, current load)
-- AI-generated explanation for *why* a particular GPU was chosen
-- Visual placement board with drag-and-drop simulation
+### 🎯 1. Autonomous GPU Placement Optimization
+The placement optimizer decides which GPU should host a new workload based on multiple factors:
+- **Available Memory:** Does the GPU have enough VRAM for the model?
+- **Thermal Headroom:** Is the GPU running cool enough?
+- **Power Headroom:** Is the PSU capacity sufficient?
+- **Current Load:** How busy is the GPU right now?
+- **Network Topology:** How close is the GPU to data sources?
 
-### 🔀 2. Inference Routing
-- Smart routing to least-loaded, coolest, and lowest-latency GPU
-- Real-time inference queue with route visualization
-- Per-request latency tracking
+Each GPU is assigned a **weighted score**, and the top candidates are sent to **Gemini AI**, which provides a natural-language explanation of the decision.
 
-### 🏋️ 3. Distributed Training
-- Multi-GPU job scheduling (2 / 4 / 8 GPU configs)
-- Live training progress tracking
-- Automatic job rebalancing
+### 🔀 2. Intelligent Inference Routing
+When an inference request arrives, the router:
+1. Filters out offline or overheated GPUs
+2. Scores remaining GPUs based on:
+   - Current queue depth
+   - Average latency (last 60s)
+   - Temperature
+   - Power efficiency
+3. Routes the request to the top-scored GPU
+4. Logs the routing decision + AI explanation
+
+### 🏋️ 3. Distributed Training Scheduler
+For large-scale training jobs:
+- Supports **2/4/8/16 GPU** configurations
+- Automatically selects GPUs within the **same node** (for NVLink efficiency)
+- Balances workloads to prevent resource starvation
+- Tracks live training progress
+- Handles mid-training failures (auto-restart on different GPUs)
 
 ### 🌡️ 4. Thermal Management
 - Real-time temperature monitoring per GPU
-- Threshold-based thermal alerts
-- Cooling control simulation
+- Configurable thermal thresholds (warning at 75°C, critical at 85°C)
+- Automatic cooling simulation (fan speed, liquid cooling)
+- Thermal alerts pushed to the frontend
+- AI-powered thermal advisories
 
-### ⚡ 5. Power Consumption
+### ⚡ 5. Power Consumption Management
 - Per-GPU and cluster-wide power tracking
-- Efficiency scoring
+- Efficiency score (performance-per-watt)
 - Power anomaly detection
+- AI recommendations for reducing power draw
+- Historical power trends
 
-### 🤖 6. AI Layer (Gemini)
-- **AI Advisor** — cluster health recommendations
-- **Anomaly Detector** — detects abnormal thermal/power patterns
-- **Decision Engine** — explains placement decisions in natural language
-- **AI Chat Panel** — ask natural language questions about the cluster
+### 🤖 6. AI Layer (Google Gemini)
+The AI layer is the "brain" of the system. It provides:
+- **AI Advisor:** Cluster health recommendations
+- **Anomaly Detector:** Detects abnormal thermal/power patterns
+- **Decision Engine:** Explains placement decisions in natural language
+- **AI Chat Panel:** Ask natural language questions about the cluster
 
 ### 📊 7. Real-Time Dashboard
-- Live stats grid, GPU heatmap, thermal/power charts
-- Active jobs panel, alerts panel, AI insights panel
-- Beautiful dark futuristic UI with glassmorphism
+- Live stats grid (total GPUs, active jobs, cluster temp, power usage)
+- GPU heatmap visualization
+- Thermal & power charts (Recharts)
+- Active jobs panel
+- Alerts panel
+- AI insights panel
 
 ### 🧪 8. Simulation Engine
-- Virtual cluster of 16–32 simulated GPUs
-- Background scheduler updating telemetry every 2–5 seconds
-- Workload generator for realistic testing
+Because the project runs on CPU-only machines:
+- Simulates **16–32 virtual GPUs**
+- Background scheduler updates telemetry every 2–5 seconds
+- Realistic temperature curves (idle ~35°C, load ~75–85°C)
+- Power draw scaling with utilization
+- Randomized workload injection
+- Failures and recoveries
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗 Architecture
 
-| Layer | Technology |
-|-------|-----------|
-| **Backend** | Python 3.10+, FastAPI, SQLAlchemy, Pydantic |
-| **Database** | SQLite (practice-friendly, zero setup) |
-| **AI** | Google Gemini API (`gemini-pro`) |
-| **Frontend** | React 18, Vite, TailwindCSS |
-| **Charts** | Recharts |
-| **Animation** | Framer Motion |
-| **Icons** | Lucide React |
-| **Auth** | JWT (python-jose + passlib) |
-| **HTTP Client** | Axios |
-| **Routing** | React Router DOM v6 |
-
----
-
-## 📁 Project Structure
+### High-Level Architecture Diagram
 
 ```text
-ai-autonomous-gpu-factory/
-├── backend/          # FastAPI server + algorithms + AI layer
-├── frontend/         # React + Vite + Tailwind UI
-├── database/         # SQL schema + seed data
-├── docs/             # API docs, architecture, setup guide
-└── scripts/          # Setup & automation scripts
+┌─────────────────────────────────────────────────────────────┐
+│                      REACT FRONTEND                         │
+│  (Vite + TailwindCSS + Recharts + Framer Motion)            │
+│                                                             │
+│  ┌────────────┐  ┌────────────┐  ┌────────────────────┐     │
+│  │ Dashboard  │  │  Placement │  │  AI Advisor Panel  │     │
+│  └────────────┘  └────────────┘  └────────────────────┘     │
+│  ┌────────────┐  ┌────────────┐  ┌────────────────────┐     │
+│  │ GPU List   │  │ Thermal    │  │  Training Queue    │     │
+│  └────────────┘  └────────────┘  └────────────────────┘     │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ Axios / REST
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     FASTAPI BACKEND                         │
+│                                                             │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  API Layer (v1 routers)                              │   │
+│  │  Auth │ GPUs │ Nodes │ Placement │ Inference │ ...   │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                           │                                 │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Service Layer                                       │   │
+│  │  Business Logic, Validation, Orchestration           │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                           │                                 │
+│  ┌──────────────────┐  ┌────────────────────┐               │
+│  │  Algorithms      │  │  AI Layer          │               │
+│  │  - Placement     │  │  - Gemini Client   │               │
+│  │  - Router        │  │  - Prompts         │               │
+│  │  - Scheduler     │  │  - Advisor         │               │
+│  │  - Thermal       │  │  - Anomaly Detect. │               │
+│  │  - Power         │  │  - Decision Engine │               │
+│  └──────────────────┘  └────────────────────┘               │
+│                           │                                 │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Simulation Engine                                   │   │
+│  │  - GPU Simulator │ Thermal │ Power │ Workloads       │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                           │                                 │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Background Scheduler (APScheduler)                  │   │
+│  │  - Telemetry updates │ Alert generation              │   │
+│  └──────────────────────────────────────────────────────┘   │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ SQLAlchemy ORM
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      SQLITE DATABASE                        │
+│  Tables: users, gpus, nodes, jobs, training_jobs,          │
+│          inference_requests, thermal_readings,             │
+│          power_readings, alerts                            │
+└─────────────────────────────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    EXTERNAL SERVICES                        │
+│  - Google Gemini API (gemini-pro)                           │
+└─────────────────────────────────────────────────────────────┘
 
 
 git clone https://github.com/vishakha2121/ai-autonomous-gpu-factory.git
@@ -109,7 +214,6 @@ pip install -r requirements.txt
 cp .env.example .env
 # Add your GEMINI_API_KEY to .env
 python run.py
-
 
 
 cd frontend
