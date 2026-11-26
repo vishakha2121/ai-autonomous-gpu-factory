@@ -51115,36 +51115,3 @@ node_modules/.vite/
 # ==========================================
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
-*.pem
-*.key
-
-# ==========================================
-# OS / EDITOR SPECIFIC
-# ==========================================
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# ==========================================
-# TESTING & COVERAGE
-# ==========================================
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-coverage.xml
-
-# ==========================================
-# MISC
-# ==========================================
-*.bak
-*.tmp
-.DS_Store
-v
